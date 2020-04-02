@@ -16,5 +16,10 @@ namespace FMHosxpGateway
         {
             InitializeComponent();
         }
+
+        private void cmdStart_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

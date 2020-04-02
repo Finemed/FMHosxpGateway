@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.tsmConfig = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmSeverConfig = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmClientConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmWorkListManagement = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmSeverConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmClientConfig = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmdStart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstLog = new System.Windows.Forms.ListBox();
@@ -54,32 +54,6 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // tsmConfig
-            // 
-            this.tsmConfig.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmSeverConfig,
-            this.tsmClientConfig});
-            this.tsmConfig.Name = "tsmConfig";
-            this.tsmConfig.Size = new System.Drawing.Size(55, 20);
-            this.tsmConfig.Text = "&Config";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // tsmSeverConfig
-            // 
-            this.tsmSeverConfig.Name = "tsmSeverConfig";
-            this.tsmSeverConfig.Size = new System.Drawing.Size(180, 22);
-            this.tsmSeverConfig.Text = "Server Config";
-            // 
-            // tsmClientConfig
-            // 
-            this.tsmClientConfig.Name = "tsmClientConfig";
-            this.tsmClientConfig.Size = new System.Drawing.Size(180, 22);
-            this.tsmClientConfig.Text = "Client Config";
-            // 
             // tsmManagement
             // 
             this.tsmManagement.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -95,6 +69,32 @@
             this.tsmWorkListManagement.Size = new System.Drawing.Size(191, 22);
             this.tsmWorkListManagement.Text = "Worklist Management";
             // 
+            // tsmConfig
+            // 
+            this.tsmConfig.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmSeverConfig,
+            this.tsmClientConfig});
+            this.tsmConfig.Name = "tsmConfig";
+            this.tsmConfig.Size = new System.Drawing.Size(55, 20);
+            this.tsmConfig.Text = "&Config";
+            // 
+            // tsmSeverConfig
+            // 
+            this.tsmSeverConfig.Name = "tsmSeverConfig";
+            this.tsmSeverConfig.Size = new System.Drawing.Size(145, 22);
+            this.tsmSeverConfig.Text = "Server Config";
+            // 
+            // tsmClientConfig
+            // 
+            this.tsmClientConfig.Name = "tsmClientConfig";
+            this.tsmClientConfig.Size = new System.Drawing.Size(145, 22);
+            this.tsmClientConfig.Text = "Client Config";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // cmdStart
             // 
             this.cmdStart.Location = new System.Drawing.Point(472, 470);
@@ -103,6 +103,7 @@
             this.cmdStart.TabIndex = 3;
             this.cmdStart.Text = "Start";
             this.cmdStart.UseVisualStyleBackColor = true;
+            this.cmdStart.Click += new System.EventHandler(this.cmdStart_Click);
             // 
             // groupBox1
             // 
