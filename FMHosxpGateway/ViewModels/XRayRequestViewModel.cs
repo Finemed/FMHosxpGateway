@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using FMHosxpGateway.Models;
-using NHapi.Base.Parser;
-using NHapiTools.Base.Net;
+
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -14,6 +14,15 @@ namespace FMHosxpGateway.ViewModels
 {
    public class XRayRequestViewModel
     {
+        private string m_connnectionstring = "";
+        private string m_tbname = "";
+
+        public XRayRequestViewModel()
+        {
+            m_connnectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["xrayrequest_constring"].ToString();
+            m_tbname = System.Configuration.ConfigurationManager.AppSettings["xrayrequest_tbname"];
+        }
+
         public List<XrayRequestModel> GetXrayRequest()
         {
             List<XrayRequestModel> result = null;
@@ -22,19 +31,19 @@ namespace FMHosxpGateway.ViewModels
 
             try
             {
-                m_con = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HOSXPWorklistDBConstring"].ToString());
+                m_con = new MySqlConnection(m_connnectionstring);
                 m_con.Open();
                 m_cmd = new MySqlCommand();
                 m_cmd.Connection = m_con;
               
 
-                string query = @"SELECT XRAY_REQUEST_ID,
+                string query = $@"SELECT XRAY_REQUEST_ID,
                                         XRAY_REQUEST_XN,
                                         XRAY_REQUEST_MSG_TYPE,
                                         XRAY_REQUEST_DATA,
                                         XRAY_REQUEST_DATETIME,
                                         XRAY_REQUEST_RECEIVE 
-                                        From XRAY_REQUEST 
+                                        From {m_tbname}   
                                         Where XRAY_REQUEST_RECEIVE = 'N' Order by XRAY_REQUEST_DATETIME asc";
 
 
@@ -68,7 +77,7 @@ namespace FMHosxpGateway.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                //MessageBox.Show(ex.ToString());
             }
             finally
             {
@@ -97,10 +106,10 @@ namespace FMHosxpGateway.ViewModels
 
             try
             {
-                string query = @"UPDATE xray_request set xray_request_receive = @xray_request_receive, xray_request_receive_datetime = @xray_request_receive_datetime where xray_request_xn = @xray_request_xn";
+                string query = $@"UPDATE {m_tbname} set xray_request_receive = @xray_request_receive, xray_request_receive_datetime = @xray_request_receive_datetime where xray_request_xn = @xray_request_xn";
 
 
-                m_con = new MySqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["HOSXPWorklistDBConstring"].ToString());
+                m_con = new MySqlConnection(m_connnectionstring);
                 m_con.Open();
                 m_cmd = new MySqlCommand();
                 m_cmd.Connection = m_con;
@@ -120,28 +129,28 @@ namespace FMHosxpGateway.ViewModels
             }
         }
 
-        public string SendRequestToServer(string requestmsg)
-        {
-            string ppIP = System.Configuration.ConfigurationManager.AppSettings["PacsPlusServerIP"];
-            int ppPort = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["PacsPlusServerPort"]);
+        //public string SendRequestToServer(string requestmsg)
+        //{
+        //    //string ppIP = System.Configuration.ConfigurationManager.AppSettings["PacsPlusServerIP"];
+        //    //int ppPort = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["PacsPlusServerPort"]);
 
-            var connection = new SimpleMLLPClient(ppIP, ppPort, Encoding.GetEncoding(874));
+        //    //var connection = new SimpleMLLPClient(ppIP, ppPort, Encoding.GetEncoding(874));
 
-            var msgresponse = connection.SendHL7Message(requestmsg);
+        //    //var msgresponse = connection.SendHL7Message(requestmsg);
       
 
-            string response = msgresponse.ToString();
+        //    //string response = msgresponse.ToString();
 
         
-            if (connection != null)
-            {
-                connection.Disconnect();
-                connection.Dispose();
-                connection = null;
-            }
+        //    //if (connection != null)
+        //    //{
+        //    //    connection.Disconnect();
+        //    //    connection.Dispose();
+        //    //    connection = null;
+        //    //}
 
-            return response;
-        }
+        //    //return response;
+        //}
 
     }
 }

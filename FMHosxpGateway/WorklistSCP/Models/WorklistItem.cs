@@ -49,5 +49,7 @@ namespace WorklistSCP.Models
 
         public string ScheduledAET { get; set; }
 
+        public string IsComplete { get; set; }
+
     }
 }
