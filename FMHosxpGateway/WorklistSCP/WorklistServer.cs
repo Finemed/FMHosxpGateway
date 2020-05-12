@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Threading;
 using WorklistSCP.Models;
 
-namespace Worklist_SCP
+namespace WorklistSCP
 {
    public class WorklistServer
    {

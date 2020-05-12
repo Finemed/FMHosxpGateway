@@ -38,7 +38,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmdStart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lstLog = new System.Windows.Forms.ListBox();
+            this.rtLog = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +107,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lstLog);
+            this.groupBox1.Controls.Add(this.rtLog);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(535, 437);
@@ -115,13 +115,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Log";
             // 
-            // lstLog
+            // rtLog
             // 
-            this.lstLog.FormattingEnabled = true;
-            this.lstLog.Location = new System.Drawing.Point(6, 19);
-            this.lstLog.Name = "lstLog";
-            this.lstLog.Size = new System.Drawing.Size(523, 407);
-            this.lstLog.TabIndex = 0;
+            this.rtLog.Location = new System.Drawing.Point(6, 19);
+            this.rtLog.Name = "rtLog";
+            this.rtLog.Size = new System.Drawing.Size(523, 412);
+            this.rtLog.TabIndex = 0;
+            this.rtLog.Text = "";
             // 
             // frmMain
             // 
@@ -134,6 +134,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.Text = "Fine Med Hoxp Gateway";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -153,7 +154,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmWorkListManagement;
         private System.Windows.Forms.Button cmdStart;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox lstLog;
+        private System.Windows.Forms.RichTextBox rtLog;
     }
 }
 

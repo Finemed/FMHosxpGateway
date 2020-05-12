@@ -4,6 +4,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dicom.Log;
+using Dicom.Network.Client;
+
 
 namespace WorklistSCP.Models
 {
@@ -27,7 +29,7 @@ namespace WorklistSCP.Models
 
         public bool SetInProgress(string sopInstanceUID, string procedureStepId)
         {
-            var workItem = WorklistServer.CurrentWorklistItems
+            var workItem = WorklistSCP.WorklistServer.CurrentWorklistItems
                 .FirstOrDefault(w => w.ProcedureStepID == procedureStepId);
             if (workItem == null)
             {

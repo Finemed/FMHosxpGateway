@@ -11,7 +11,7 @@ using Dicom.Log;
 using Dicom.Network;
 using WorklistSCP.Models;
 
-namespace Worklist_SCP
+namespace WorklistSCP
 {
     public class WorklistService : DicomService, IDicomServiceProvider, IDicomCEchoProvider, IDicomCFindProvider, IDicomNServiceProvider
     {

@@ -17,6 +17,7 @@ public class RequestMsgModel
             this.OBRS = new List<OBRItem>();
         }
         public Segment Org_PID { set; get; }
+        public Segment Org_PV1 { set; get; }
         public Segment Org_ORC { set; get; }
         public List<Segment> Org_OBR { set; get; }
 

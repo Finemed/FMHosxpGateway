@@ -16,6 +16,7 @@ namespace FMHosxpGateway.ViewModels
     {
         private string m_connnectionstring = "";
         private string m_tbname = "";
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         public XRayRequestViewModel()
         {
@@ -72,12 +73,10 @@ namespace FMHosxpGateway.ViewModels
                     //not have row
                     result = null;
                 }
-               
-                // Console.WriteLine(string.Format("\nDATA READER VALUES FirstName: {0} LastName: {1}", user.FirstName, user.LastName));
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.ToString());
+                Logger.Error(ex.Message);
             }
             finally
             {
@@ -125,32 +124,8 @@ namespace FMHosxpGateway.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.Error(ex.Message);
             }
         }
-
-        //public string SendRequestToServer(string requestmsg)
-        //{
-        //    //string ppIP = System.Configuration.ConfigurationManager.AppSettings["PacsPlusServerIP"];
-        //    //int ppPort = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["PacsPlusServerPort"]);
-
-        //    //var connection = new SimpleMLLPClient(ppIP, ppPort, Encoding.GetEncoding(874));
-
-        //    //var msgresponse = connection.SendHL7Message(requestmsg);
-      
-
-        //    //string response = msgresponse.ToString();
-
-        
-        //    //if (connection != null)
-        //    //{
-        //    //    connection.Disconnect();
-        //    //    connection.Dispose();
-        //    //    connection = null;
-        //    //}
-
-        //    //return response;
-        //}
-
     }
 }

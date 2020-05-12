@@ -14,6 +14,7 @@ namespace FMHosxpGateway.ViewModels
     {
         private string m_connnectionstring = "";
         private string m_tbname = "";
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         public XRayResultViewModel()
         {

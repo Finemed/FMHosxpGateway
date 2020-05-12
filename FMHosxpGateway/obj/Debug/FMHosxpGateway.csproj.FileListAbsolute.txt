@@ -41,3 +41,11 @@ D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\System.Diagnostics.DiagnosticSo
 D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\NLog.config
 D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\NLog.dll
 D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\NLog.xml
+D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\NLog.Windows.Forms.dll
+D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\NLog.Windows.Forms.xml
+D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\System.Buffers.dll
+D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\System.Memory.dll
+D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\System.Buffers.xml
+D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\System.Memory.xml
+D:\HOSXP\FMHosxpGateway\FMHosxpGateway\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
