@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FMHosxpGateway.Models;
 
-using MySql.Data;
-using MySql.Data.MySqlClient;
+//using MySql.Data;
+//using MySql.Data.MySqlClient;
 
-
+using MySqlConnector;
 
 namespace FMHosxpGateway.ViewModels
 {
@@ -33,22 +33,39 @@ namespace FMHosxpGateway.ViewModels
             try
             {
                 m_con = new MySqlConnection(m_connnectionstring);
-                m_con.Open();
+                try
+                {
+                    m_con.Open();
+                }
+                catch (Exception exo)
+                {
+                    Logger.Error("Open Connection Error" + exo.ToString());
+                }
+
                 m_cmd = new MySqlCommand();
                 m_cmd.Connection = m_con;
               
+
+                //string query = $@"SELECT XRAY_REQUEST_ID,
+                //                        XRAY_REQUEST_XN,
+                //                        XRAY_REQUEST_MSG_TYPE,
+                //                        XRAY_REQUEST_DATA,
+                //                        XRAY_REQUEST_DATETIME, 
+                //                        XRAY_REQUEST_RECEIVE 
+                //                        From {m_tbname}   
+                //                        Where XRAY_REQUEST_RECEIVE = 'N' and XRAY_REQUEST_DATETIME >= CURDATE() Order by XRAY_REQUEST_DATETIME asc";
+
 
                 string query = $@"SELECT XRAY_REQUEST_ID,
                                         XRAY_REQUEST_XN,
                                         XRAY_REQUEST_MSG_TYPE,
                                         XRAY_REQUEST_DATA,
-                                        XRAY_REQUEST_DATETIME,
+                                        XRAY_REQUEST_DATETIME, 
                                         XRAY_REQUEST_RECEIVE 
                                         From {m_tbname}   
                                         Where XRAY_REQUEST_RECEIVE = 'N' Order by XRAY_REQUEST_DATETIME asc";
 
-
-              m_cmd.CommandText = query;
+                m_cmd.CommandText = query;
 
                 MySqlDataReader m_rd = m_cmd.ExecuteReader();
 
@@ -76,7 +93,7 @@ namespace FMHosxpGateway.ViewModels
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error("Exception GetXrayRequest " + ex.ToString());
             }
             finally
             {

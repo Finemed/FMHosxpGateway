@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FMHosxpGateway.Models;
-using MySql.Data;
-using MySql.Data.MySqlClient;
+//using MySql.Data;
+//using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace FMHosxpGateway.ViewModels
 {

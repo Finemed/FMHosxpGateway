@@ -14,6 +14,8 @@ namespace FMHosxpGateway.WorklistSCP.ViewModels
     public class WorklistViewModel
     {
         string mwlclient_tbname = "";
+        
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         public WorklistViewModel()
         {
@@ -34,7 +36,7 @@ namespace FMHosxpGateway.WorklistSCP.ViewModels
                 m_cmd = new MySqlCommand();
                 m_cmd.Connection = m_con;
 
-                string query = @"INSER INTO {mwlclient_tbname} ( AccessionNumber,
+                string query = $@"INSER INTO {mwlclient_tbname} ( AccessionNumber,
                                                                  PatientID,              
                                                                  Surname,
                                                                  Forename,
@@ -96,7 +98,7 @@ namespace FMHosxpGateway.WorklistSCP.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.Error(ex.ToString());
             }
             finally
             {
@@ -129,7 +131,7 @@ namespace FMHosxpGateway.WorklistSCP.ViewModels
                 m_cmd = new MySqlCommand();
                 m_cmd.Connection = m_con;
 
-                string query = @"UPDATE {mwlclient_tbname}  SET 
+                string query = $@"UPDATE {mwlclient_tbname}  SET 
                                                     AccessionNumber=@AccessionNumber,
                                                     PatientID=@PatientID,
                                                     Surname=@Surname,
@@ -175,7 +177,7 @@ namespace FMHosxpGateway.WorklistSCP.ViewModels
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.ToString());
+                Logger.Error(ex.ToString());
             }
             finally
             {
@@ -209,7 +211,7 @@ namespace FMHosxpGateway.WorklistSCP.ViewModels
                 m_cmd = new MySqlCommand();
                 m_cmd.Connection = m_con;
 
-                string query = @"DELETE FROM {mwlclient_tbname} 
+                string query = $@"DELETE FROM {mwlclient_tbname} 
                                  WHERE AccessionNumber=@AccessionNumber";
 
                 m_cmd.CommandText = query;
@@ -219,7 +221,7 @@ namespace FMHosxpGateway.WorklistSCP.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.Error(ex.ToString());
             }
             finally
             {
@@ -251,7 +253,7 @@ namespace FMHosxpGateway.WorklistSCP.ViewModels
                 m_cmd = new MySqlCommand();
                 m_cmd.Connection = m_con;
 
-                string query = @"UPDATE {mwlclient_tbname} SET 
+                string query = $@"UPDATE {mwlclient_tbname} SET 
                                  IsComplete=@IsComplete 
                                  WHERE AccessionNumber=@AccessionNumber";
 
@@ -263,7 +265,7 @@ namespace FMHosxpGateway.WorklistSCP.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.Error(ex.ToString());
             }
             finally
             {
